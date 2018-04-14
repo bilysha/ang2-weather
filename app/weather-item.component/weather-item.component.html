@@ -1,0 +1,17 @@
+<div class="city">
+    <p class="timezone">{{city.timezone}}</p>
+    <img src='./resourses/weather-icons/{{city.currently.icon}}.png'>
+    <span class="current temperature">{{city.currently.temperature}}°C</span>
+    <p class="current summary">{{city.currently.summary}}</p>
+    <p class="current">Updated as of <span class="bold">{{city.updated}}</span></p>
+    <div class="additional current">
+        <p>Feels like <span class="bold">{{city.currently.apparentTemperature}}</span>°C</p>
+        <p>Wind <span class="bold">{{city.currently.windSpeed}}</span> km/h</p>
+        <p *ngIf="city.currently.visibility">Visibility <span class="bold">{{city.currently.visibility}}</span> km</p>
+    </div>
+    <div class="additional current">
+        <p>Barometer <span class="bold">{{city.currently.pressure}}</span> mb</p>
+        <p>Humidity <span class="bold">{{city.currently.humidity}}</span>%</p>
+        <p>Dew point <span class="bold">{{city.currently.dewPoint}}</span>°C</p>
+    </div>
+</div>

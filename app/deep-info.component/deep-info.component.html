@@ -1,0 +1,11 @@
+<section class="cities">
+    <div class="city" *ngFor="let city of cities" (click)="select(city.id)" [ngClass]="{'active' : isActive(city)}">
+        <p>{{city.timezone}}</p>
+        <img src="resourses/weather-icons/{{city.currently.icon}}.png">
+        <p>{{city.currently.summary}}</p>
+    </div>
+</section>
+<section class="week">
+    <detail *ngFor="let day of activeCity.daily.data" [day]="day"></detail>
+</section>
+

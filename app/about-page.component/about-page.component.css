@@ -1,0 +1,22 @@
+h1 {
+    text-align: center;
+    margin: 50px 0;
+    font-size: 50px;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+p {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 30px;
+    margin: 20px 50px;
+}
+
+p a {
+    color: rgb(112, 23, 23);
+    font-style: italic;
+    cursor: pointer;
+}
+
+p a:hover {
+    text-decoration: underline;
+}

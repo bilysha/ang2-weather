@@ -1,0 +1,27 @@
+<div class="wrapper">
+
+    <div class="content">
+        <header>
+            <p>
+                <a routerLink="/home">
+                    Angular app 
+                    <span>Simply Weather Getter app</span>
+                </a>
+            </p>
+            <nav>
+                <a routerLink="/home" routerLinkActive="active-link">Home</a>
+                <a routerLink="/detail" routerLinkActive="active-link">Detail</a>
+                <a routerLink="/developer" routerLinkActive="active-link">Developer</a>
+                <a routerLink="/about" routerLinkActive="active-link">About</a>
+            </nav>
+        </header>
+        <main>
+            <router-outlet></router-outlet>
+        </main>
+    </div>
+  
+    <footer>
+        <p>Povered dy DarkSkyAPI</p>
+    </footer>
+  
+  </div>

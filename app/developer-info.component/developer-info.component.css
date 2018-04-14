@@ -1,0 +1,41 @@
+img {
+    display: block;
+    width: 300px;
+    height: 300px;
+    border: 2px solid rgb(54, 4, 4);;
+    border-radius: 50%;
+    margin: 50px auto;
+}
+
+.fio {
+    text-align: center;
+    font-size: 30px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    color: rgb(54, 4, 4);
+}
+
+.fio span {
+    font-size: 35px;
+    color: #000;
+}
+
+.position {
+    text-align: center;
+    margin: 10px 0;
+}
+
+ul {
+    display: flex;
+    justify-content: space-around;
+    width: 20%;
+    margin: 0 auto;
+    cursor: pointer;
+}
+
+ul li a {
+    color: rgb(54, 4, 4);
+}
+
+ul li a:hover {
+    color: rgb(112, 23, 23);
+}
