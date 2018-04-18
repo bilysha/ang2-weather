@@ -1,11 +1,21 @@
-<section class="cities">
-    <div class="city" *ngFor="let city of cities" (click)="select(city.id)" [ngClass]="{'active' : isActive(city)}">
-        <p>{{city.timezone}}</p>
-        <img src="resourses/weather-icons/{{city.currently.icon}}.png">
-        <p>{{city.currently.summary}}</p>
-    </div>
-</section>
-<section class="week">
-    <detail *ngFor="let day of activeCity.daily.data" [day]="day"></detail>
-</section>
-
+<div *ngIf="city">
+    <section class="city">
+        <button (click)="change(-1)">
+            <i class="fas fa-4x fa-chevron-left"></i>
+        </button>
+        <div>
+            <p class="timezone">{{city.timezone}}</p>
+            <p>{{city.daily.summary}}</p>
+        </div>
+        <button (click)="change(1)">
+            <i class="fas fa-4x fa-chevron-right"></i>
+        </button>    
+    </section>
+    <section class="week">
+        <article *ngFor="let day of city.daily.data" class="day">
+            <p>{{day.time}}</p>
+            <img src="resourses/weather-icons/{{day.icon}}.png">
+            <p><span>{{day.temperatureMin}}</span> / {{day.temperatureMax}}</p>
+        </article>
+    </section>
+</div>

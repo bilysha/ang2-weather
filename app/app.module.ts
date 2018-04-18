@@ -10,7 +10,7 @@ import { WeatherListComponent } from './weather-list.component/weather-list.comp
 import { AboutPageComponent } from './about-page.component/about-page.component';
 import { WeatherItemComponent } from './weather-item.component/weather-item.component';
 import { WeatherDeepInfoComponent } from './deep-info.component/depp-info.component';
-import { DetailComponent } from './deep-info.component/detail.component/detail.component';
+import { OopsComponent } from './deep-info.component/oops.component/oops.component';
 
 import { CitiesService } from './services/cities.service';
 
@@ -20,10 +20,11 @@ import { CitiesService } from './services/cities.service';
         RouterModule.forRoot([
             {path: 'home', component: WeatherListComponent},
             {path: 'detail', component: WeatherDeepInfoComponent},
-            {path: 'detail/:id', component: WeatherDeepInfoComponent},
+            {path: 'detail/:timezone', component: WeatherDeepInfoComponent},
             {path: 'developer', component: DeveloperInfoComponent},
             {path: 'about', component: AboutPageComponent},
-            {path: '', redirectTo: 'home', pathMatch: 'full'}
+            {path: 'invalid', component: OopsComponent },
+            {path: '', redirectTo: 'invalid', pathMatch: 'full'}
         ]),
         HttpModule,
         JsonpModule
@@ -35,7 +36,7 @@ import { CitiesService } from './services/cities.service';
         AboutPageComponent,
         WeatherItemComponent,
         WeatherDeepInfoComponent,
-        DetailComponent
+        OopsComponent
     ],
     providers: [CitiesService],
     bootstrap: [AppComponent]

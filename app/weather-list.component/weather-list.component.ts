@@ -14,14 +14,17 @@ export class WeatherListComponent {
 
     constructor(private citiesService: CitiesService,
         private router: Router) {
-        this.cities = [];
-    }
-
-    ngOnInit() {
             this.cities = this.citiesService.getCities();
     }
 
-    select(id: any) {
-        this.router.navigate(['detail',id]);
+    ngOnInit() {
+        console.log('list   ', this.cities);
+        if(this.cities.length != 4) {
+            this.citiesService.makeRequest();
+        }
+    }
+
+    select(timezone: String) {
+        this.router.navigate(['detail', timezone]);
     }
 }

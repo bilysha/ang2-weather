@@ -19,24 +19,43 @@ export class CitiesService {
     }
 
     getCities() {
-        if(!this.cities.length) {
-            for(let i = 0; i < items.length; i++) {
-                this.sendRequest(this.items[i].cords, i);
-            }
-        }
         return this.cities;
     }
 
-    getCity(id: Number) {
-        for(var i = 0; i < this.cities.length; i++) {
-            if(this.cities[i].id === id) {
-                return this.cities[i];
+    makeRequest() {
+        for(let i = 0; i < this.cities.length; i++) {
+            for(let j = 0; j < this.items.length; j++) {
+                if(this.cities[i].timezone === this.items[j].city) {
+                    this.items.splice(j, 1);
+                    j--;
+                }
             }
         }
-        return this.cities[0];
+        for(let i = 0; i < this.items.length; i++) {
+            this.sendRequest(this.items[i].cords, i);
+        }
+    }
+
+    getCity(timezone: string) {
+        for(var i = 0; i < this.items.length; i++) {
+            if(this.items[i].city === timezone) {
+                return this.items[i];
+            }
+        }
+        return this.items[0];
+    }
+
+    getIndex(timezone: String) {
+        for(var i = 0; i < this.cities.length; i++) {
+            if(this.cities[i].timezone === timezone) {
+                return i;
+            }
+        }
+        return 0;
     }
 
     sendRequest(item: String, index: any) {
+        console.log('send');
         this.http.get(url + token + item)
         .toPromise()
         .then(res => this.insertCity(res.json(), index))
@@ -66,6 +85,12 @@ export class CitiesService {
         this.normalizeCurrently(obj.currently);
         obj.updated = obj.currently.time.toString().slice(16,21);
         this.cities.push(obj);
+    }
+
+    testRequest(item: String, city: String) {
+        console.log('request for ', city)
+        return this.http.get(url + token + item)
+        .toPromise()
     }
 
 }

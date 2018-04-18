@@ -1,18 +1,18 @@
 const items = [{
     id: 1,
-    city: 'Belarus, Minsk',
+    city: 'Minsk',
     cords: '53.9,27.56667'
 },{
     id: 2,
-    city: 'Belarus, Berezino',
+    city: 'Berezino',
     cords: '53.83256305,28.99096489'
 },{
     id: 3,
-    city: 'Belarus, Mikhalevo',
+    city: 'Mikhalevo',
     cords: '53.70203214,28.93626264'
 },{
     id: 4,
-    city: 'Belarus, Vaykavusk',
+    city: 'Vaykavusk',
     cords: '53.1516417,24.4422029'
 }];
 const url = 'https://api.darksky.net/forecast/' ;
