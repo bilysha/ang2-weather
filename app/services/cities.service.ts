@@ -8,11 +8,14 @@ import '../shared/constants';
 
 import 'rxjs/add/operator/toPromise';
 import 'rxjs/add/operator/map';
+import 'rxjs/add/operator/distinctUntilChanged';
+import 'rxjs/add/operator/switchMap';
+import 'rxjs/add/operator/do';
 
 @Injectable()
 export class CitiesService {
     cities: any;
-    items = items;
+    items = Object.assign([],items);
 
     constructor(private http: Http, private jsonp: Jsonp) {
         this.cities = [];
@@ -32,7 +35,7 @@ export class CitiesService {
             }
         }
         for(let i = 0; i < this.items.length; i++) {
-            this.sendRequest(this.items[i].cords, i);
+            this.sendRequest(this.items[i].cords, this.items[i].id - 1);
         }
     }
 
@@ -55,11 +58,10 @@ export class CitiesService {
     }
 
     sendRequest(item: String, index: any) {
-        console.log('send');
-        this.http.get(url + token + item)
+        let apiURL = url + token + item + callback;
+        this.jsonp.request(apiURL)
         .toPromise()
         .then(res => this.insertCity(res.json(), index))
-        .catch(res => console.error('Request ends with status : ', res.status));
     }
 
     convertTemperature(temp: any) {
@@ -88,8 +90,8 @@ export class CitiesService {
     }
 
     testRequest(item: String, city: String) {
-        console.log('request for ', city)
-        return this.http.get(url + token + item)
+        let apiURL = url + token + item + callback;
+        return this.jsonp.request(apiURL)
         .toPromise()
     }
 

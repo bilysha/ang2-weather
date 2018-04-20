@@ -10,7 +10,9 @@ import { WeatherListComponent } from './weather-list.component/weather-list.comp
 import { AboutPageComponent } from './about-page.component/about-page.component';
 import { WeatherItemComponent } from './weather-item.component/weather-item.component';
 import { WeatherDeepInfoComponent } from './deep-info.component/depp-info.component';
-import { OopsComponent } from './deep-info.component/oops.component/oops.component';
+import { WeekComponent } from './deep-info.component/week.component/week.component';
+
+import { OopsComponent } from './oops.component/oops.component';
 
 import { CitiesService } from './services/cities.service';
 
@@ -23,8 +25,8 @@ import { CitiesService } from './services/cities.service';
             {path: 'detail/:timezone', component: WeatherDeepInfoComponent},
             {path: 'developer', component: DeveloperInfoComponent},
             {path: 'about', component: AboutPageComponent},
-            {path: 'invalid', component: OopsComponent },
-            {path: '', redirectTo: 'invalid', pathMatch: 'full'}
+            {path: '', redirectTo: 'home', pathMatch: 'full'},
+            {path: '**', component: OopsComponent}
         ]),
         HttpModule,
         JsonpModule
@@ -36,7 +38,8 @@ import { CitiesService } from './services/cities.service';
         AboutPageComponent,
         WeatherItemComponent,
         WeatherDeepInfoComponent,
-        OopsComponent
+        OopsComponent,
+        WeekComponent
     ],
     providers: [CitiesService],
     bootstrap: [AppComponent]

@@ -1,71 +1,57 @@
 .city {
     background-color: #fff;
-    width: 500px;
     margin: 50px 0;
     cursor: pointer;
     position: relative;
-    border-radius: 20px;
     padding: 10px;
-    box-shadow: 0px 0px 40px 5px rgb(10, 163, 163); 
-}
-
-.city:hover {
-    transition: all 0.5s;
-    box-shadow: 0px 0px 40px 5px rgb(1, 109, 109);
-}
-
-.city:hover .timezone {
-    transition: all 0.5s;
-    color: rgb(1, 109, 109);
-}
-
-.city:hover .current {
-    transition: all 1s;
-    color: #000;
-}
-
-.city:not(:hover), .city:not(:hover) .timezone {
     transition: all 2s;
 }
 
-.current {
-    transition: all 2s;
-    color: rgb(1, 109, 109);
-    margin: 10px 0;
-    text-align: center;
+.current-information {
+    display: flex;
+}
+
+p {
+    font-family: 'Ubuntu', sans-serif; 
+    color: rgb(50, 0, 0);
+}
+
+.timezone {
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(50, 0, 0);
+}
+
+.summary {
+    font-size: 20px;
+    margin: 20px 0;
 }
 
 .temperature {
-    transition: all 2s;
-    color: #9b9a9a;
-    position: absolute;
-    font-size: 150px;
-    font-weight: bold;
-    right: 10px;
-    top: 100px;
+    margin: 60px 0 0 20px;
 }
 
-.bold {
+.temperature .current{
+    font-size: 70px;
+    font-weight: bold;
+}
+
+.temperature .apparent {
+    font-size: 20px;
     font-weight: bold;
 }
 
 .additional {
+    margin-left: 100px;
     display: flex;
+    flex-direction: column;
     justify-content: space-around;
 }
 
-.timezone {
-    font-size: 40px;
+.additional p {
+    font-size: 16px;
+}
+
+.bold {
     font-weight: bold;
-    color: #7e7e7e;
-    text-align: center;
-    margin: 20px 0 50px 0;
-}
-
-img {
-    margin-bottom: 50px;
-}
-
-p {
-    font-size: 20px;
 }

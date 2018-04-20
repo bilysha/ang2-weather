@@ -17,4 +17,4 @@ const items = [{
 }];
 const url = 'https://api.darksky.net/forecast/' ;
 const token = '216003fd9aebe5231a3b062fb1949d8a/';
-const callback = '?format=jsonp&callback=JSON_CALLBACK';
+const callback = '?format=jsonp&callback=JSONP_CALLBACK';

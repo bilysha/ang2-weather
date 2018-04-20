@@ -18,13 +18,13 @@ export class WeatherListComponent {
     }
 
     ngOnInit() {
-        console.log('list   ', this.cities);
         if(this.cities.length != 4) {
             this.citiesService.makeRequest();
         }
     }
 
     select(timezone: String) {
+        console.log(this.cities);
         this.router.navigate(['detail', timezone]);
     }
 }

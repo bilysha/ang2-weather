@@ -1,21 +1,17 @@
 <div *ngIf="city">
-    <section class="city">
-        <button (click)="change(-1)">
-            <i class="fas fa-4x fa-chevron-left"></i>
-        </button>
-        <div>
-            <p class="timezone">{{city.timezone}}</p>
-            <p>{{city.daily.summary}}</p>
-        </div>
-        <button (click)="change(1)">
-            <i class="fas fa-4x fa-chevron-right"></i>
-        </button>    
-    </section>
-    <section class="week">
-        <article *ngFor="let day of city.daily.data" class="day">
-            <p>{{day.time}}</p>
-            <img src="resourses/weather-icons/{{day.icon}}.png">
-            <p><span>{{day.temperatureMin}}</span> / {{day.temperatureMax}}</p>
-        </article>
-    </section>
+    <div class="city-container">
+        <section class="city">
+            <button (click)="change(-1)">
+                <i class="fas fa-4x fa-chevron-left"></i>
+            </button>
+            <div>
+                <p class="timezone">{{city.timezone}}</p>
+                 <p>{{city.daily.summary}}</p>
+            </div>
+            <button (click)="change(1)">
+                <i class="fas fa-4x fa-chevron-right"></i>
+            </button>    
+        </section>
+    </div>
+    <week [city]="city"></week>
 </div>

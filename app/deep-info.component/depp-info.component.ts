@@ -16,6 +16,7 @@ export class WeatherDeepInfoComponent {
     cities: any;
     city: any;
     targetCity: any;
+    items: any;
 
     constructor(private service: CitiesService, 
         private router: Router,
@@ -24,10 +25,9 @@ export class WeatherDeepInfoComponent {
     }
 
     ngOnInit() {
-        console.log('detail   ', this.cities);
+        this.cities = this.service.getCities();
         this.activatedRoute.params.forEach((params) => {
             this.targetCity = this.service.getCity(params['timezone']);
-            console.log('target city' ,this.targetCity);
             let that = this;
             let needRequest = true;
 
@@ -46,11 +46,9 @@ export class WeatherDeepInfoComponent {
                 .then(function(res) {
                     that.service.insertCity(res.json(), that.targetCity.id - 1);
                     that.city = that.cities[that.service.getIndex(that.targetCity.city)];
-                    console.log(that.city);
                     that.normalize();
                 })
-            }  
-
+            }
         });
     }
 
@@ -66,7 +64,6 @@ export class WeatherDeepInfoComponent {
     normalizeDay(day: any) {
         day.time = new Date(+(day.time + '000'));
         day.time = day.time.toString().slice(0,4).concat(day.time.toString().slice(8,10));
-
         day.temperatureMax = this.service.convertTemperature(day.temperatureMax);
         day.temperatureMin = this.service.convertTemperature(day.temperatureMin);
     }
@@ -75,4 +72,5 @@ export class WeatherDeepInfoComponent {
         let newIndex = (this.city.id + 3 + num) % 4;
         this.router.navigate(['detail', items[newIndex].city]);
     }
+
 }
