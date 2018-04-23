@@ -17,6 +17,8 @@ export class WeatherDeepInfoComponent {
     city: any;
     targetCity: any;
     items: any;
+    labels: any = [];
+    dataset: any = [];
 
     constructor(private service: CitiesService, 
         private router: Router,
@@ -36,6 +38,7 @@ export class WeatherDeepInfoComponent {
                     this.city = this.cities[i];
                     if(!this.city.alreadyParses) {
                         this.normalize();
+                        setTimeout(this.display,0, this.city);
                     }
                     needRequest = false;
                 }
@@ -47,6 +50,7 @@ export class WeatherDeepInfoComponent {
                     that.service.insertCity(res.json(), that.targetCity.id - 1);
                     that.city = that.cities[that.service.getIndex(that.targetCity.city)];
                     that.normalize();
+                    setTimeout(that.display,0,that.labels, that.dataset);
                 })
             }
         });
@@ -59,6 +63,12 @@ export class WeatherDeepInfoComponent {
         for(let i = 0; i < this.city.daily.data.length; i++) {
             this.normalizeDay(this.city.daily.data[i])
         }
+        for(let i = 0; i < 25; i+= 2) {
+            this.city.hourly.data[i].time = new Date(+(this.city.hourly.data[i].time + '000')).toString().slice(16,21);
+            this.labels.push(this.city.hourly.data[i].time);
+            this.dataset.push(Math.floor(this.city.hourly.data[i].temperature));
+        }
+        console.log(this.city.hourly);
     }
 
     normalizeDay(day: any) {
@@ -71,6 +81,25 @@ export class WeatherDeepInfoComponent {
     change(num: Number) {
         let newIndex = (this.city.id + 3 + num) % 4;
         this.router.navigate(['detail', items[newIndex].city]);
+        console.log(this.city);
+    }
+
+    display(labels: any, dataset: any) {
+        let myChart = document.getElementById('myChart').getContext('2d');
+        myChart = new Chart(myChart, {
+            type: 'bar',
+            data: {
+              labels: labels,
+              datasets: [{
+                label: 'temperature',
+                data: dataset,
+                backgroundColor: 'rgba(0, 0, 0,0.2)',
+                borderColor: '#282121'
+              }]
+            },
+            options: {}
+        });
+        console.log(myChart);
     }
 
 }

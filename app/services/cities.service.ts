@@ -64,10 +64,6 @@ export class CitiesService {
         .then(res => this.insertCity(res.json(), index))
     }
 
-    convertTemperature(temp: any) {
-        return Math.floor((temp - 32) * 5 / 9);
-    }
-
     normalizeCurrently(obj: any) {
         obj.temperature = Math.floor(obj.temperature);
         obj.apparentTemperature = Math.floor(obj.apparentTemperature);

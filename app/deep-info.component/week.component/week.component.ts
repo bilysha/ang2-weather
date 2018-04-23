@@ -15,7 +15,7 @@ export class WeekComponent {
     constructor(private service: CitiesService) {}
 
     normalize(day: any) {
-        day.dewPoint = this.service.convertTemperature(day.dewPoint);
+        day.dewPoint = Math.floor(day.dewPoint);
         day.humidity = Math.floor(day.humidity * 100);
         day.cloudCover = Math.floor(day.cloudCover * 100);
 

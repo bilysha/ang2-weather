@@ -1,10 +1,12 @@
-<section class="week">
-    <article *ngFor="let day of city.daily.data" class="day" (click)="select(day)" [ngClass]="{'active' : activeDay == day }">
-        <p>{{day.time}}</p>
-        <img src="resourses/weather-icons/{{day.icon}}.png" alt="day weather icon">
-        <p><span>{{day.temperatureMin}}</span> / {{day.temperatureMax}}</p>
-    </article>
-</section>
+<div class="week-container">
+    <section class="week">
+            <article *ngFor="let day of city.daily.data" class="day" (click)="select(day)" [ngClass]="{'active' : activeDay == day }">
+                <p>{{day.time}}</p>
+                <img src="resourses/weather-icons/{{day.icon}}.png" alt="day weather icon">
+                <p><span>{{day.temperatureMin}}</span> / {{day.temperatureMax}}</p>
+        </article>
+    </section>
+</div>
 <div class="detail-container" *ngIf="activeDay">
     <p class="summary">{{activeDay.summary}}</p>
     <div class="detail">
