@@ -1,14 +1,22 @@
 .city {
     background-color: #fff;
-    margin: 50px 0;
+    margin: 10px;
     cursor: pointer;
     position: relative;
-    padding: 10px;
+    padding: 30px;
     transition: all 2s;
+    max-width: 1000px;
+    min-width: 600px;
+}
+
+.city:hover {
+    background-color: rgb(212, 212, 212);
+    transition: all 1s linear;
 }
 
 .current-information {
     display: flex;
+    justify-content: space-between;
 }
 
 p {
@@ -19,6 +27,7 @@ p {
 .timezone {
     font-size: 30px;
     font-weight: bold;
+    padding-bottom: 20px;
     border-bottom: 2px solid rgb(50, 0, 0);
 }
 
@@ -28,30 +37,34 @@ p {
 }
 
 .temperature {
-    margin: 60px 0 0 20px;
+    margin-left: 50px;
+    vertical-align: top;
+    display: inline-block;
 }
 
 .temperature .current{
-    font-size: 70px;
-    font-weight: bold;
+    font-size: 50px;
 }
 
 .temperature .apparent {
     font-size: 20px;
-    font-weight: bold;
 }
 
 .additional {
-    margin-left: 100px;
     display: flex;
     flex-direction: column;
-    justify-content: space-around;
+    align-items:flex-end;
 }
 
 .additional p {
     font-size: 16px;
+    margin: 10px 0;
 }
 
 .bold {
     font-weight: bold;
+}
+
+img {
+    width: 100px;
 }

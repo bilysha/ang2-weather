@@ -4,17 +4,17 @@
         <div>
             <p class="summary">{{city.currently.summary}}</p>
             <img src="./resourses/weather-icons/{{city.currently.icon}}.png" alt="current weather icon">
-        </div>
-        <div class="temperature">
-                <p class="current">{{city.currently.temperature}}°C</p>
-                <p>feels like: <span class="apparent">{{city.currently.apparentTemperature}}°C</span></p>
+            <div class="temperature">
+                <p class="current bold">{{city.currently.temperature}}°C</p>
+                <p>feels like: <span class="apparent bold">{{city.currently.apparentTemperature}}°C</span></p>
+            </div>
         </div>
         <div class="additional">
             <p>- Wind <span class="bold">{{city.currently.windSpeed}}</span> km/h -</p>
             <p *ngIf="city.currently.visibility">- Visibility <span class="bold">{{city.currently.visibility}}</span> km -</p>
-            <p>- Barometer <span class="bold">{{city.currently.pressure}}</span> mb -</p>
             <p>- Humidity <span class="bold">{{city.currently.humidity}}</span>% -</p>
             <p>- Dew point <span class="bold">{{city.currently.dewPoint}}</span>°C -</p>
+            <p>- Barometer <span class="bold">{{city.currently.pressure}}</span> mb -</p>
         </div>
     </div>
 </div>

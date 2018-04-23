@@ -69,14 +69,14 @@ export class CitiesService {
     }
 
     normalizeCurrently(obj: any) {
-        obj.temperature = this.convertTemperature(obj.temperature);
-        obj.apparentTemperature = this.convertTemperature(obj.apparentTemperature);
+        obj.temperature = Math.floor(obj.temperature);
+        obj.apparentTemperature = Math.floor(obj.apparentTemperature);
         obj.windSpeed = Math.floor(obj.windSpeed);
         if(obj.visibility) {
             obj.visibility = Math.floor(obj.visibility);
         }
         obj.humidity = Math.floor(obj.humidity * 100);
-        obj.dewPoint = this.convertTemperature(obj.dewPoint);
+        obj.dewPoint = Math.floor(obj.dewPoint);
         obj.time = new Date(+(obj.time + '000'));
         obj.pressure = Math.floor(obj.pressure);
     }

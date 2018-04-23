@@ -53,7 +53,7 @@ export class WeatherDeepInfoComponent {
     }
 
     normalize() {
-        let temperature = this.service.convertTemperature(parseInt(this.city.daily.summary.match(/\d{1,3}°F/)));
+        let temperature = Math.floor(parseInt(this.city.daily.summary.match(/\d{1,3}°F/)));
         this.city.daily.summary = this.city.daily.summary.replace(/\d{1,3}°F/, temperature + '°C')
         this.city.alreadyParses = true;
         for(let i = 0; i < this.city.daily.data.length; i++) {
@@ -64,8 +64,8 @@ export class WeatherDeepInfoComponent {
     normalizeDay(day: any) {
         day.time = new Date(+(day.time + '000'));
         day.time = day.time.toString().slice(0,4).concat(day.time.toString().slice(8,10));
-        day.temperatureMax = this.service.convertTemperature(day.temperatureMax);
-        day.temperatureMin = this.service.convertTemperature(day.temperatureMin);
+        day.temperatureMax = Math.floor(day.temperatureMax);
+        day.temperatureMin = Math.floor(day.temperatureMin);
     }
 
     change(num: Number) {
