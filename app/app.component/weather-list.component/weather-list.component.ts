@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 
-import { CitiesService } from '../services/cities.service';
+import { CitiesService } from '../../services/cities.service';
 import { Router } from '@angular/router';
 
 @Component({
@@ -24,7 +24,6 @@ export class WeatherListComponent {
     }
 
     select(timezone: String) {
-        console.log(this.cities);
         this.router.navigate(['detail', timezone]);
     }
 }

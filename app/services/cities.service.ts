@@ -1,5 +1,4 @@
-import { Http, Response } from '@angular/http';
-import { Jsonp } from '@angular/http';
+import { Jsonp, Response } from '@angular/http';
 
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
@@ -12,17 +11,38 @@ import 'rxjs/add/operator/distinctUntilChanged';
 import 'rxjs/add/operator/switchMap';
 import 'rxjs/add/operator/do';
 
+import { NormalizeService } from './normalize.service';
+
 @Injectable()
 export class CitiesService {
     cities: any;
     items = Object.assign([],items);
 
-    constructor(private http: Http, private jsonp: Jsonp) {
+    constructor(private jsonp: Jsonp,
+                private normalize: NormalizeService) {
         this.cities = [];
     }
 
     getCities() {
         return this.cities;
+    }
+
+    getCity(timezone: String) {
+        for(var i = 0; i < items.length; i++) {
+            if(items[i].city === timezone) {
+                return items[i];
+            }
+        }
+        return items[0];
+    }
+
+    getIndex(timezone: String) {
+        for(var i = 0; i < this.cities.length; i++) {
+            if(this.cities[i].timezone === timezone) {
+                return i;
+            }
+        }
+        return 0;
     }
 
     makeRequest() {
@@ -39,24 +59,6 @@ export class CitiesService {
         }
     }
 
-    getCity(timezone: string) {
-        for(var i = 0; i < this.items.length; i++) {
-            if(this.items[i].city === timezone) {
-                return this.items[i];
-            }
-        }
-        return this.items[0];
-    }
-
-    getIndex(timezone: String) {
-        for(var i = 0; i < this.cities.length; i++) {
-            if(this.cities[i].timezone === timezone) {
-                return i;
-            }
-        }
-        return 0;
-    }
-
     sendRequest(item: String, index: any) {
         let apiURL = url + token + item + callback;
         this.jsonp.request(apiURL)
@@ -64,31 +66,18 @@ export class CitiesService {
         .then(res => this.insertCity(res.json(), index))
     }
 
-    normalizeCurrently(obj: any) {
-        obj.temperature = Math.floor(obj.temperature);
-        obj.apparentTemperature = Math.floor(obj.apparentTemperature);
-        obj.windSpeed = Math.floor(obj.windSpeed);
-        if(obj.visibility) {
-            obj.visibility = Math.floor(obj.visibility);
-        }
-        obj.humidity = Math.floor(obj.humidity * 100);
-        obj.dewPoint = Math.floor(obj.dewPoint);
-        obj.time = new Date(+(obj.time + '000'));
-        obj.pressure = Math.floor(obj.pressure);
-    }
-
-    insertCity(obj: any, index: any) {
-        obj.timezone = items[index].city;
-        obj.id = items[index].id;
-        this.normalizeCurrently(obj.currently);
-        obj.updated = obj.currently.time.toString().slice(16,21);
-        this.cities.push(obj);
-    }
-
-    testRequest(item: String, city: String) {
+    getRequest(item: String, city: String) {
         let apiURL = url + token + item + callback;
         return this.jsonp.request(apiURL)
         .toPromise()
     }
 
+    insertCity(obj: any, index: any) {
+        obj.timezone = items[index].city;
+        obj.id = items[index].id;
+        this.normalize.currently(obj.currently);
+        obj.updated = obj.currently.time.toString().slice(16,21);
+        this.cities.push(obj);
+    }
+    
 }

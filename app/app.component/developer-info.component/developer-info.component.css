@@ -2,7 +2,7 @@ img {
     display: block;
     width: 300px;
     height: 300px;
-    border: 2px solid rgb(50, 0, 0);;
+    border: 2px solid #383838;
     border-radius: 50%;
     margin: 50px auto;
 }
@@ -14,7 +14,7 @@ p {
 .fio {
     text-align: center;
     font-size: 30px;
-    color: rgb(50, 0, 0);
+    color: #383838;
 }
 
 .fio span {
@@ -35,9 +35,9 @@ ul {
 }
 
 ul li a {
-    color: rgb(50, 0, 0);
+    color: #383838;
 }
 
 ul li a:hover {
-    color: rgb(200, 0, 0);
+    color: #c7c7c7;
 }
