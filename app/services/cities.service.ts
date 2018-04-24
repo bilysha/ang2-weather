@@ -3,15 +3,11 @@ import { Jsonp, Response } from '@angular/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs/Rx';
 
+import { NormalizeService } from './normalize.service';
+
 import '../shared/constants';
 
 import 'rxjs/add/operator/toPromise';
-import 'rxjs/add/operator/map';
-import 'rxjs/add/operator/distinctUntilChanged';
-import 'rxjs/add/operator/switchMap';
-import 'rxjs/add/operator/do';
-
-import { NormalizeService } from './normalize.service';
 
 @Injectable()
 export class CitiesService {
