@@ -13,14 +13,12 @@ export class WeatherListComponent {
     cities: Object[];
 
     constructor(private citiesService: CitiesService,
-        private router: Router) {
-            this.cities = this.citiesService.getCities();
+                private router: Router) {
+        this.cities = this.citiesService.getCities();
     }
 
     ngOnInit() {
-        if(this.cities.length != 4) {
-            this.citiesService.makeRequest();
-        }
+        this.citiesService.getData();
     }
 
     select(timezone: String) {

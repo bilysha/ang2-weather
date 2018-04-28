@@ -31,6 +31,10 @@ export class WeatherDetailInfoComponent {
         this.cities = this.service.getCities();
         this.activatedRoute.params.forEach((params) => {
             this.targetCity = this.service.getCity(params['timezone']);
+            if(this.targetCity === 'not') {      
+                this.router.navigate(['invalid']);
+                return;
+            }
             let that = this;
             let needRequest = true;
 

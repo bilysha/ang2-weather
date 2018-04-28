@@ -16,11 +16,19 @@ export class CitiesService {
 
     constructor(private jsonp: Jsonp,
                 private normalize: NormalizeService) {
-        this.cities = [];
+        this.cities = JSON.parse(localStorage.getItem('userCities'));
+        if(this.cities == null) {
+            this.cities = Object.assign([],items);
+        }
+        console.log(this.cities);
     }
 
     getCities() {
         return this.cities;
+    }
+
+    uploadCities() {
+        localStorage.setItem('userCities', JSON.stringify(items));
     }
 
     getCity(timezone: String) {
@@ -29,7 +37,7 @@ export class CitiesService {
                 return items[i];
             }
         }
-        return items[0];
+        return timezone == undefined ? items[0] : 'not';
     }
 
     getIndex(timezone: String) {
@@ -39,27 +47,6 @@ export class CitiesService {
             }
         }
         return 0;
-    }
-
-    makeRequest() {
-        for(let i = 0; i < this.cities.length; i++) {
-            for(let j = 0; j < this.items.length; j++) {
-                if(this.cities[i].timezone === this.items[j].city) {
-                    this.items.splice(j, 1);
-                    j--;
-                }
-            }
-        }
-        for(let i = 0; i < this.items.length; i++) {
-            this.sendRequest(this.items[i].cords, this.items[i].id - 1);
-        }
-    }
-
-    sendRequest(item: String, index: any) {
-        let apiURL = url + token + item + callback;
-        this.jsonp.request(apiURL)
-        .toPromise()
-        .then(res => this.insertCity(res.json(), index))
     }
 
     getRequest(item: String, city: String) {
@@ -73,7 +60,31 @@ export class CitiesService {
         obj.id = items[index].id;
         this.normalize.currently(obj.currently);
         obj.updated = obj.currently.time.toString().slice(16,21);
-        this.cities.push(obj);
+        this.cities.splice(index, 1, obj);
     }
     
+    getData() {
+        let xhr = new XMLHttpRequest();
+
+        xhr.open('GET','resourses/city.list.json', false);
+
+        xhr.send();
+
+        if(xhr.status != 200 ) {
+            console.log('error')
+        }
+        else {
+            let data = JSON.parse(xhr.responseText);
+            console.log(data);
+            let count = 0;
+            let start = Date.now();
+            for(let i = 0; i < data.length; i++) {
+                if(data[i].country === "RU") {
+                    count++;
+                }
+            }
+            console.log(start - Date.now());
+            console.log("ru cities -> ", count)
+        }
+    }
 }
