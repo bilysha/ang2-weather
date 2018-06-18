@@ -1,0 +1,102 @@
+.week-container {
+  margin-top: 20px;
+  margin-left: 40px;
+  padding: 20px;
+  background-color: #fff;
+}
+
+.days-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.day {
+  background-color: #CCD4F3;
+  cursor: pointer;
+  padding: 10px 5px;
+  margin: 0 5px;
+  transition: all 1s;
+}
+
+.day:first-child {
+  margin-left: 0;
+}
+.day:last-child {
+  margin-right: 0;
+}
+
+.day.active {
+  background-color: #6377CC;
+  color: #fff;
+}
+
+.day:not(.active):hover {
+  background-color: #A6B5F3;
+  transition: all 0.4s;
+}
+
+.day p {
+  text-align: center;
+  font-size: 14px;
+}
+
+.day p span {
+  font-weight: bold;
+}
+
+.day img {
+  display: block;
+  margin: 20px auto;
+  width: 50%;
+}
+
+.detail-container {
+  font-size: 16px;
+  background-color: #6377CC;
+  color: #fff;
+}
+
+.summary {
+  font-size: 24px;
+  padding: 20px;
+}
+
+.detail {
+  display: flex;
+  justify-content: space-around;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.info p {
+  line-height: 30px;
+  text-align: left;
+}
+
+.sun figure, .temperature figure {
+  display: flex;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.sun figure figcaption, .temperature figure figcaption  {
+  font-size: 40px;
+  margin-left: 10px;
+}
+
+.temperature img {
+  height: 50px;
+}
+
+.temperature p {
+  margin-bottom: 10px;
+}
+
+.info, .sun, .temperature {
+  width: 30%;
+  padding-top: 20px;
+  padding-left: 20px;
+  border-top: 2px solid #CCD4F3;
+}
