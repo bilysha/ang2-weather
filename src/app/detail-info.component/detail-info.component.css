@@ -7,32 +7,34 @@
 .tabs-container button {
   width: 24%;
   border:none;
-  background-color:#CCD4F3;
+  background-color:#e2e2e2;
   font-size: 20px;
   padding: 20px 0;
-  color: #fff;
+  color: #383838;
   font-family: 'Ubuntu' ;
-  font-weight: bold;
   cursor: pointer;
+  border-radius: 5px 5px 0 0;
 }
 
 .tabs-container button:not(.active):hover {
-  background-color: #A6B5F3;
+  background-color: #c7c7c7;
 }
 
 .tabs-container button.active {
-  background-color: #6377CC;
+  background-color: #fff;
+  font-weight: bold;
 }
 
 .city-container {
-  background-color: #6377CC;
+  background-color: #fff;
+  color: #383838;
   padding: 20px;
   position: relative;
   font-family: 'Ubuntu';
+  border-radius: 0 0 5px 5px;
 }
 
 .title, .subtitle {
-  color: #fff;
   letter-spacing: 2px;
 }
 
@@ -54,11 +56,11 @@
 }
 
 .current-container p {
-  background-color: #fff;
+  background-color: #e2e2e2;
   font-size: 18px;
-  color: #6377CC;
   margin-bottom: 10px;
-  padding: 10px 5px;
+  padding: 10px 20px;
+  border-radius: 5px;
 }
 
 .time-container {
@@ -69,7 +71,7 @@
 
 .time-container p {
   text-align: right;
-  color: #fff;
+  color: #383838;
   font-size: 18px;
   letter-spacing: 2px;
   line-height: 24px;

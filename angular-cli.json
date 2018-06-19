@@ -11,11 +11,11 @@
         "assets",
         "favicon.ico"
       ],
-      "index": "index.html",
-      "main": "main.ts",
-      "polyfills": "polyfills.ts",
-      "test": "test.ts",
-      "tsconfig": "tsconfig.json",
+      "index": "./index.html",
+      "main": "./main.ts",
+      "polyfills": "./polyfills.ts",
+      "test": "./test.ts",
+      "tsconfig": "./tsconfig.json",
       "prefix": "app",
       "styles": [
         "styles.css"

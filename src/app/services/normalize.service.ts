@@ -17,29 +17,30 @@ export class NormalizeService {
     }
 
     daily(obj: any) {
-        let temperature = Math.floor(parseInt(obj.daily.summary.match(/\d{1,3}°F/)));
-        obj.daily.summary = obj.daily.summary.replace(/\d{1,3}°F/, temperature + '°C')
+        const temperature = Math.floor(parseInt(obj.daily.summary.match(/\d{1,3}°F/), 10));
+        obj.daily.summary = obj.daily.summary.replace(/\d{1,3}°F/, temperature + '°C');
         obj.alreadyParses = true;
         obj.labels = [];
         obj.dataset = [];
+        obj.icons = [];
         for (let i = 0; i < obj.daily.data.length; i++) {
-            this.day(obj.daily.data[i])
+            this.day(obj.daily.data[i]);
         }
-        for (let i = 0; i < 25; i+= 2) {
-            obj.hourly.data[i].time = new Date(+(obj.hourly.data[i].time + '000')).toString().slice(16,21);
+        for (let i = 0; i < 25; i ++) {
+            obj.hourly.data[i].time = new Date(+(obj.hourly.data[i].time + '000')).toString().slice(16, 21);
             obj.labels.push(obj.hourly.data[i].time);
             obj.dataset.push(Math.floor(obj.hourly.data[i].temperature));
+            obj.icons.push(obj.hourly.data[i].icon);
         }
         obj.time = {};
         obj.time.day = obj.currently.time.toString().slice(0, 15);
         obj.time.time = obj.currently.time.toString().slice(16, 31);
-        obj.time.gmt = obj.currently.time.toString().slice(35, 56);
-
+        obj.time.gmt = obj.currently.time.toString().slice(35, obj.currently.time.toString().length - 1);
     }
 
     day(day: any) {
         day.time = new Date(+(day.time + '000'));
-        day.time = day.time.toString().slice(0,4).concat(day.time.toString().slice(8,10));
+        day.time = day.time.toString().slice(0, 4).concat(day.time.toString().slice(8, 10));
         day.temperatureMax = Math.floor(day.temperatureMax);
         day.temperatureMin = Math.floor(day.temperatureMin);
     }

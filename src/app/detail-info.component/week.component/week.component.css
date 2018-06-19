@@ -2,7 +2,9 @@
   margin-top: 20px;
   margin-left: 40px;
   padding: 20px;
-  background-color: #fff;
+  background-color: #e2e2e2;
+  border-radius: 5px;
+  color: #383838;
 }
 
 .days-container {
@@ -11,11 +13,11 @@
 }
 
 .day {
-  background-color: #CCD4F3;
   cursor: pointer;
   padding: 10px 5px;
   margin: 0 5px;
   transition: all 1s;
+  border-radius: 5px;
 }
 
 .day:first-child {
@@ -26,12 +28,13 @@
 }
 
 .day.active {
-  background-color: #6377CC;
+  background-color: #c2c2c2;
   color: #fff;
+  border-radius: 5px 5px 0 0;
 }
 
 .day:not(.active):hover {
-  background-color: #A6B5F3;
+  background-color: #c7c7c7;
   transition: all 0.4s;
 }
 
@@ -52,8 +55,7 @@
 
 .detail-container {
   font-size: 16px;
-  background-color: #6377CC;
-  color: #fff;
+  background-color: #c2c2c2;
 }
 
 .summary {
@@ -73,6 +75,8 @@
 .info p {
   line-height: 30px;
   text-align: left;
+  margin-bottom: 10px;
+  padding-left: 20px;
 }
 
 .sun figure, .temperature figure {
@@ -98,5 +102,5 @@
   width: 30%;
   padding-top: 20px;
   padding-left: 20px;
-  border-top: 2px solid #CCD4F3;
+  border-top: 2px solid #e2e2e2;
 }

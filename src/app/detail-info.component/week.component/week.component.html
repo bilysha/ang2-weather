@@ -3,7 +3,7 @@
   <div class="days-container">
     <article *ngFor="let day of city.daily.data" class="day" (click)="select(day)" [ngClass]="{'active' : activeDay == day }">
       <p>{{day.time}}</p>
-      <img src="./assets/weather-icons/{{day.icon}}.png" alt="day weather icon">
+      <img src="./assets/weather-icons/white/{{day.icon}}.png" alt="day weather icon">
       <p><span>{{day.temperatureMin}}</span> / {{day.temperatureMax}}</p>
     </article>
   </div>

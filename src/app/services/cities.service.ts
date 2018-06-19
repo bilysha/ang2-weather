@@ -18,9 +18,8 @@ export class CitiesService {
                 private normalize: NormalizeService) {
         this.cities = JSON.parse(localStorage.getItem('userCities'));
         if(this.cities == null) {
-            this.cities = Object.assign([],items);
+            this.cities = Object.assign([], items);
         }
-        console.log(this.cities);
     }
 
     getCities() {
@@ -37,7 +36,7 @@ export class CitiesService {
                 return items[i];
             }
         }
-        return timezone == undefined ? items[0] : 'not';
+        return timezone === undefined ? items[0] : 'not';
     }
 
     getIndex(timezone: String) {
@@ -52,7 +51,7 @@ export class CitiesService {
     getRequest(item: String, city: String) {
         let apiURL = url + token + item + callback;
         return this.jsonp.request(apiURL)
-        .toPromise()
+        .toPromise();
     }
 
     insertCity(obj: any, index: any) {
@@ -63,28 +62,4 @@ export class CitiesService {
         this.cities.splice(index, 1, obj);
     }
 
-    getData() {
-        let xhr = new XMLHttpRequest();
-
-        xhr.open('GET','resourses/city.list.json', false);
-
-        xhr.send();
-
-        if(xhr.status != 200 ) {
-            console.log('error')
-        }
-        else {
-            let data = JSON.parse(xhr.responseText);
-            console.log(data);
-            let count = 0;
-            let start = Date.now();
-            for(let i = 0; i < data.length; i++) {
-                if(data[i].country === "RU") {
-                    count++;
-                }
-            }
-            console.log(start - Date.now());
-            console.log("ru cities -> ", count)
-        }
-    }
 }

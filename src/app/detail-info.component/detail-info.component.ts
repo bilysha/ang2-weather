@@ -60,7 +60,6 @@ export class WeatherDetailInfoComponent implements OnInit {
                     that.city = that.cities[that.service.getIndex(that.targetCity.city)];
                     that.normalize.daily(that.city);
                     that.isReadyChart = true;
-                    console.log(that.city);
                 });
             }
         });

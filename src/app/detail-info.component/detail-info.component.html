@@ -16,7 +16,7 @@
       </article>
       <p class="title">Per day:</p>
       <p class="subtitle">{{city.hourly.summary}}</p>
-      <chartHTML></chartHTML>
+      <chartHTML [labels]="city.labels" [dataset]="city.dataset" [icons]="city.icons"></chartHTML>
       <p class="title">Per week:</p>
       <p class="subtitle">{{city.daily.summary}}</p>
       <week [city]="city"></week>
