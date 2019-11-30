@@ -4,7 +4,7 @@ import { Component } from '@angular/core';
   moduleId: module.id,
   selector: 'about-page',
   templateUrl: 'about-page.component.html',
-  styleUrls: ['about-page.component.css']
+  styleUrls: ['about-page.component.less']
 })
 export class AboutPageComponent {
 

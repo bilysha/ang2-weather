@@ -1,0 +1,91 @@
+@import "./../../variables.less";
+
+.select-city-container {
+  padding: 0 40px;
+  color: #20233e;
+
+  ul {
+    display: flex;
+    justify-content: space-between;
+
+    li {
+      flex: 1;
+      background: #fff;
+      font-size: 24px;
+      padding: 40px;
+      cursor: pointer;
+
+      &:last-child {
+        border-radius: 0 20px 20px 0;
+      }
+
+      &:first-child {
+        border-radius: 20px 0 0 20px;
+      }
+
+      &:not(:last-child) {
+        border-right: 1px solid @fallback-color;
+      }
+
+      &:not(.active):hover {
+        background: @secondary-color;
+        color: #fff;
+      }
+
+      &.active {
+        background: @primary-color;
+        color: #fff;
+      }
+    }
+  }
+}
+
+.detail {
+  padding: 40px;
+
+  h2 {
+    font-size: 40px;
+    color: @primary-text-color;
+    margin-bottom: 20px;
+  }
+
+  .common {
+    display: flex;
+    margin-bottom: 40px;
+
+    .info,
+    .timezone {
+      background: #fff;
+      flex: 1;
+      border-radius: 20px;
+      padding: 40px;
+      font-size: 24px;
+      line-height: 28px;
+
+      .accent {
+        color: @secondary-color;
+      }
+
+      li {
+        margin-bottom: 5px;
+      }
+    }
+
+    .info {
+      border-bottom: 10px solid @primary-text-color;
+    }
+
+    .timezone {
+      margin-left: 40px;
+      text-align: right;
+      border-bottom: 10px solid @accent-color;
+    }
+  }
+
+  .chart-area {
+    padding: 40px;
+    background: #fff;
+    border-radius: 20px;
+    margin-bottom: 40px;
+  }
+}

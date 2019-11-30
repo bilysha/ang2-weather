@@ -40,7 +40,8 @@ export class NormalizeService {
 
   day(day: any) {
     day.time = new Date(+(day.time + '000'));
-    day.time = day.time.toString().slice(0, 4).concat(day.time.toString().slice(8, 10));
+    day.weekDay = day.time.toString().slice(0, 3).toUpperCase();
+    day.weekDate = day.time.toString().slice(4, 10);
     day.temperatureMax = Math.floor(day.temperatureMax);
     day.temperatureMin = Math.floor(day.temperatureMin);
   }

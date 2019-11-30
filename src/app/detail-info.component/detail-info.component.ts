@@ -11,7 +11,7 @@ import { NormalizeService } from '../services/normalize.service';
   moduleId: module.id,
   selector: 'detail-info',
   templateUrl: 'detail-info.component.html',
-  styleUrls: ['detail-info.component.css']
+  styleUrls: ['detail-info.component.less']
 })
 export class WeatherDetailInfoComponent implements OnInit {
     cities: any;

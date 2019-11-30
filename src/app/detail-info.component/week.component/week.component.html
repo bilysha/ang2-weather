@@ -1,6 +1,4 @@
-<div class="week-container">
-
-  <div class="days-container">
+<!-- <div class="days-container">
     <article *ngFor="let day of city.daily.data" class="day" (click)="select(day)" [ngClass]="{'active' : activeDay == day }">
       <p>{{day.time}}</p>
       <img src="./assets/weather-icons/white/{{day.icon}}.png" alt="day weather icon">
@@ -43,6 +41,36 @@
         </figure>
       </div>
     </div>
-  </div>
+  </div> -->
 
-</div>
+<ul class="week-container">
+  <li *ngFor="let day of city.daily.data, let i = index" (click)="select(day)" class="day {{'index-' + i}}"
+    [ngClass]="{'active' : activeDay == day }">
+    <div class="header">
+      <p>{{day.weekDay}}</p>
+      <p class="weekDate">{{day.weekDate}}</p>
+    </div>
+    <div class="body">
+      <div class="left" *ngIf="day == activeDay">
+        <p class="feels-like"> Feels like {{day.apparentTemperatureMax}} °C</p>
+        <p class="temperature-main">{{day.temperatureMax}} °C</p>
+      </div>
+      <div class="right">
+        <div class="image-container">
+          <img src="./assets/weather-icons/svg/white/{{day.icon}}.svg" alt="day weather icon">
+        </div>
+        <div class="summary" *ngIf="day == activeDay">
+          <p class="info">{{day.icon}}</p>
+          <p>Pressure: {{day.pressure}} mb</p>
+          <p>Humidity: {{day.humidity}} %</p>
+          <p>Wind: {{day.windSpeed}} km/h</p>
+          <p></p>
+        </div>
+        <div class="temperature-shortcut" *ngIf="day != activeDay">
+          <p>{{day.temperatureMax}} °C</p>
+          <p>{{day.temperatureMin}} °C</p>
+        </div>
+      </div>
+    </div>
+  </li>
+</ul>

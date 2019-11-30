@@ -1,31 +1,37 @@
-<div class="center">
+<nav class="select-city-container">
+  <ul>
+    <li *ngFor="let item of items" [ngClass]="{'active': targetCity.city === item.city}"
+      (click)="changeCity(item.city)">
+      {{item.city}}</li>
+  </ul>
+</nav>
 
-  <article class="tabs-container">
-    <button *ngFor="let item of items" [ngClass]="{'active': targetCity.city === item.city}" (click)="changeCity(item.city)">{{item.city}}</button>
-  </article>
+<div class="detail" *ngIf="city">
+  <h2>Now: {{city.currently.summary}}</h2>
 
-  <section class="city-container">
-    <div *ngIf="city">
-      <p class="title">Now:</p>
-      <p class="subtitle">{{city.currently.summary}}</p>
-      <article class="current-container">
-        <p>Wind: {{city.currently.windSpeed}} km/h</p>
-        <p>Humidity: {{city.currently.humidity}} %</p>
-        <p>Dew point: {{city.currently.dewPoint}} °C</p>
-        <p>Barometer: {{city.currently.pressure}} mb</p>
-      </article>
-      <p class="title">Per day:</p>
-      <p class="subtitle">{{city.hourly.summary}}</p>
-      <chartHTML [labels]="city.labels" [dataset]="city.dataset" [icons]="city.icons"></chartHTML>
-      <p class="title">Per week:</p>
-      <p class="subtitle">{{city.daily.summary}}</p>
-      <week [city]="city"></week>
-      <article class="time-container">
-        <p>{{city.time.day}}</p>
-        <p>{{city.time.time}}</p>
-        <p>{{city.time.gmt}}</p>
-      </article>
+  <div class="common">
+    <div class="info">
+      <ul>
+        <li>Wind: <span class="accent">{{city.currently.windSpeed}} km/h</span></li>
+        <li>Humidity: <span class="accent">{{city.currently.humidity}} %</span></li>
+        <li>Dew point: <span class="accent">{{city.currently.dewPoint}} °C</span></li>
+        <li>Barometer: <span class="accent">{{city.currently.pressure}} mb</span></li>
+      </ul>
     </div>
-  </section>
+    <div class="timezone">
+      <ul>
+        <li>Wed Nov 27 2019</li>
+        <li>22:26:44 GMT+03</li>
+        <li>Moscow Standard Time</li>
+      </ul>
+    </div>
+  </div>
 
+  <h2>Per day: {{city.hourly.summary}}</h2>
+  <div class="chart-area">
+    <chartHTML [labels]="city.labels" [dataset]="city.dataset" [icons]="city.icons"></chartHTML>
+  </div>
+
+  <h2>Per week: {{city.daily.summary}}</h2>
+  <week [city]="city"></week>
 </div>

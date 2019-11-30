@@ -1,0 +1,166 @@
+@import "./../../../variables.less";
+
+.week-container {
+  display: flex;
+  * {
+    transition: all 0.5s;
+  }
+
+  .day {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+
+    .header {
+      padding: 20px;
+      color: #fff;
+      display: flex;
+      justify-content: center;
+
+      .weekDate {
+        display: none;
+      }
+    }
+
+    .body {
+      height: 250px;
+      padding: 20px;
+      color: #fff;
+      display: flex;
+
+      .left {
+        flex: 1;
+      }
+
+      .right {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        line-height: 24px;
+
+        .image-container {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+      }
+
+      img {
+        width: 50px;
+        height: 50px;
+      }
+
+      .temperature-shortcut {
+        font-weight: bold;
+      }
+    }
+
+    &.active {
+      flex: 4;
+
+      .header {
+        justify-content: space-between;
+
+        .weekDate {
+          display: block;
+        }
+      }
+
+      .body {
+        img {
+          width: 100px;
+          height: 100px;
+        }
+
+        .left {
+          .temperature-main {
+            font-size: 52px;
+            font-weight: bold;
+            margin: 20px 0;
+          }
+        }
+      }
+    }
+
+    &.index-0 {
+      .header {
+        background: @secondary-color;
+      }
+
+      .body {
+        background: @primary-color;
+      }
+    }
+
+    &.index-1 {
+      .header {
+        background: #4bc1cc;
+      }
+
+      .body {
+        background: #6699a5;
+      }
+    }
+
+    &.index-2 {
+      .header {
+        background: #42a9b2;
+      }
+
+      .body {
+        background: #56828c;
+      }
+    }
+
+    &.index-3 {
+      .header {
+        background: #3a9299;
+      }
+
+      .body {
+        background: #476a72;
+      }
+    }
+
+    &.index-4 {
+      .header {
+        background: #307a7f;
+      }
+
+      .body {
+        background: #385359;
+      }
+    }
+
+    &.index-5 {
+      .header {
+        background: #266266;
+      }
+
+      .body {
+        background: #283b3f;
+      }
+    }
+
+    &.index-6 {
+      .header {
+        background: #1d4a4c;
+      }
+
+      .body {
+        background: #182326;
+      }
+    }
+
+    &.index-7 {
+      .header {
+        background: #133133;
+      }
+
+      .body {
+        background: #080b0c;
+      }
+    }
+  }
+}

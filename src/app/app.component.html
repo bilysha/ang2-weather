@@ -1,40 +1,27 @@
-<div class="wrapper">
-
-  <div class="content">
-
-    <header>
-      <p>
-        <a routerLink="/home">
-          Weather Getter
-          <span>Angular 2 application</span>
-        </a>
-      </p>
-      <nav>
-        <ul>
-          <li>
-            <a routerLink="/home" routerLinkActive="active-link">Home</a>
-          </li>
-          <li>
-            <a routerLink="/detail" routerLinkActive="active-link">Detail</a>
-          </li>
-          <li>
-            <a routerLink="/developer" routerLinkActive="active-link">Developer</a>
-          </li>
-          <li>
-            <a routerLink="/about" routerLinkActive="active-link">About</a>
-          </li>
-        </ul>
-      </nav>
-    </header>
-
-    <main>
-      <router-outlet></router-outlet>
-    </main>
-
+<main>
+  <div class="sidebar" [ngClass]="{'expanded': isExpanded}">
+    <div class="logo">
+      <a routerLink="/home" title="Home"><img src="./../assets/img/logo.png" /></a>
+    </div>
+    <nav class="navigation">
+      <ul>
+        <li routerLinkActive="active" title="Home">
+          <a routerLink="/home" routerLinkActive="active-link"><i class="fa fa-home"></i><span>Home</span></a>
+        </li>
+        <li routerLinkActive="active" title="Detail information per day">
+          <a routerLink="/detail" routerLinkActive="active-link"><i class="fa fa-area-chart"></i><span>Detail</span></a>
+        </li>
+        <li routerLinkActive="active" title="About weather API">
+          <a routerLink="/about" routerLinkActive="active-link"><i class="fa fa-info-circle"></i><span>About</span></a>
+        </li>
+      </ul>
+    </nav>
+    <div class="expand">
+      <button (click)="toggleSidebar()"><i class="fa fa-angle-double-right"></i></button>
+    </div>
   </div>
-
-  <footer>
-      <p><span>Povered by </span><a href="https://darksky.net/dev" target="blank">DarkSkyAPI</a></p>
-  </footer>
-
-</div>
+  <div class="main-content">
+    <h1>It's easy to be in touch with the weather!</h1>
+    <router-outlet></router-outlet>
+  </div>
+</main>

@@ -6,7 +6,7 @@ import { NormalizeService } from '../../services/normalize.service';
   moduleId: module.id,
   selector: 'week',
   templateUrl: 'week.component.html',
-  styleUrls: ['week.component.css']
+  styleUrls: ['week.component.less']
 })
 export class WeekComponent implements OnChanges {
     @Input() city: any;
@@ -16,7 +16,6 @@ export class WeekComponent implements OnChanges {
 
     select(day: any) {
       if (this.activeDay === day) {
-        this.activeDay = undefined;
         return;
       }
       if (!day.alreadyParsed) {
@@ -27,6 +26,6 @@ export class WeekComponent implements OnChanges {
     }
 
     ngOnChanges() {
-      this.activeDay = undefined;
+      this.activeDay = this.city.daily.data[0];
     }
 }
